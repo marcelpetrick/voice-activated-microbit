@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 
-#define INFERENCING_KEYWORD     "microbit"
+#define INFERENCING_KEYWORD     "Auto"
 
 static NRF52ADCChannel *mic = NULL;
 static ContinuousAudioStreamer *streamer = NULL;
@@ -79,7 +79,7 @@ mic_inference_test()
 {
     if (mic == NULL){
         mic = uBit.adc.getChannel(uBit.io.microphone);
-        mic->setGain(7,0);          // Uncomment for v1.47.2
+        mic->setGain(7,1);          // Uncomment for v1.47.2
         //mic->setGain(7,1);        // Uncomment for v1.46.2
     }
 
