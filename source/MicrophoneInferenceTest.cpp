@@ -79,7 +79,7 @@ mic_inference_test()
 {
     if (mic == NULL){
         mic = uBit.adc.getChannel(uBit.io.microphone);
-        mic->setGain(7,1);          // Uncomment for v1.47.2
+        mic->setGain(7,0);          // Uncomment for v1.47.2
         //mic->setGain(7,1);        // Uncomment for v1.46.2
     }
 
