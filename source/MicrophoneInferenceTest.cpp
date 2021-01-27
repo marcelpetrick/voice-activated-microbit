@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 
-#define INFERENCING_KEYWORD     "Auto"
+#define INFERENCING_KEYWORD     "auto_11khz"
 
 static NRF52ADCChannel *mic = NULL;
 static ContinuousAudioStreamer *streamer = NULL;
@@ -66,7 +66,7 @@ static void heard_keyword() {
 static void heard_other() {
     const char * empty_emoji ="\
         000,000,000,000,000\n\
-        000,000,000,000,000\n\
+        000,128,000,000,000\n\
         000,000,255,000,000\n\
         000,000,000,000,000\n\
         000,000,000,000,000\n";
@@ -79,7 +79,7 @@ mic_inference_test()
 {
     if (mic == NULL){
         mic = uBit.adc.getChannel(uBit.io.microphone);
-        mic->setGain(7,0);          // Uncomment for v1.47.2
+        mic->setGain(7,1);          // Uncomment for v1.47.2
         //mic->setGain(7,1);        // Uncomment for v1.46.2
     }
 
@@ -119,7 +119,7 @@ mic_inference_test()
 
     uBit.serial.printf("Allocated everything else\n");
 
-    // number of frames since we heard 'microbit'
+    // number of frames since we heard 'auto'
     uint8_t last_keywords = 0b0;
 
     int heard_keyword_x_ago = 100;
@@ -154,7 +154,7 @@ mic_inference_test()
                     ei_printf_float(result.classification[ix].value);
                     ei_printf("\n");
 
-                    if (strcmp(result.classification[ix].label, INFERENCING_KEYWORD) == 0 && result.classification[ix].value > 0.7) {
+                    if (strcmp(result.classification[ix].label, INFERENCING_KEYWORD) == 0 && result.classification[ix].value > 0.5) {
                         heard_keyword_this_window = true;
                     }
                 }
