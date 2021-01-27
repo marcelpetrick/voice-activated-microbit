@@ -66,9 +66,9 @@ static void heard_keyword() {
 static void heard_other() {
     const char * empty_emoji ="\
         000,000,000,000,000\n\
-        000,128,000,000,000\n\
+        000,255,000,255,000\n\
         000,000,255,000,000\n\
-        000,000,000,000,000\n\
+        000,255,000,255,000\n\
         000,000,000,000,000\n";
     MicroBitImage img(empty_emoji);
     uBit.display.print(img);
@@ -79,7 +79,7 @@ mic_inference_test()
 {
     if (mic == NULL){
         mic = uBit.adc.getChannel(uBit.io.microphone);
-        mic->setGain(7,1);          // Uncomment for v1.47.2
+        mic->setGain(7,0);          // Uncomment for v1.47.2
         //mic->setGain(7,1);        // Uncomment for v1.46.2
     }
 
@@ -154,7 +154,7 @@ mic_inference_test()
                     ei_printf_float(result.classification[ix].value);
                     ei_printf("\n");
 
-                    if (strcmp(result.classification[ix].label, INFERENCING_KEYWORD) == 0 && result.classification[ix].value > 0.5) {
+                    if (strcmp(result.classification[ix].label, INFERENCING_KEYWORD) == 0 && result.classification[ix].value > 0.7) {
                         heard_keyword_this_window = true;
                     }
                 }
