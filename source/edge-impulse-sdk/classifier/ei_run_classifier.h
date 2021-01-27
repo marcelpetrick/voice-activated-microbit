@@ -294,10 +294,10 @@ extern "C" EI_IMPULSE_ERROR run_classifier_continuous(signal_t *signal, ei_impul
 
         ei_impulse_error = run_inference(&classify_matrix, result, debug);
 
-        //for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-        //    result->classification[ix].value =
-        //        run_moving_average_filter(&classifier_maf[ix], result->classification[ix].value);
-        //}
+        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+            result->classification[ix].value =
+                run_moving_average_filter(&classifier_maf[ix], result->classification[ix].value);
+        }
 
         /* Shift the feature buffer for new data */
         for (size_t i = 0; i < (EI_CLASSIFIER_NN_INPUT_FRAME_SIZE - feature_size); i++) {

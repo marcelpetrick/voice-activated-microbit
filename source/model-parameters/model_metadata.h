@@ -44,15 +44,15 @@
 #define EI_CLASSIFIER_INPUT_HEIGHT               0
 #define EI_CLASSIFIER_INTERVAL_MS                0.0909090909090909
 #define EI_CLASSIFIER_OUT_TENSOR_NAME            "y_pred/Softmax_1:0"
-#define EI_CLASSIFIER_LABEL_COUNT                3
+#define EI_CLASSIFIER_LABEL_COUNT                4
 #define EI_CLASSIFIER_HAS_ANOMALY                0
 #define EI_CLASSIFIER_FREQUENCY                  11000
 
 #define EI_CLASSIFIER_TFLITE_ARENA_SIZE          10278
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
-#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.04553883895277977
-#define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -15
+#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.03793536126613617
+#define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -4
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE     EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED     1
 #define EI_CLASSIFIER_TFLITE_OUTPUT_SCALE        0.00390625
@@ -68,7 +68,7 @@
 #define EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW    4
 #endif // EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 
-const char* ei_classifier_inferencing_categories[] = { "auto_vocal_11khz", "noise", "unknown" };
+const char* ei_classifier_inferencing_categories[] = { "auto_11khz_20210127", "auto_vocal_11khz", "noise", "unknown" };
 
 typedef struct {
     int axes;
